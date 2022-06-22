@@ -18,7 +18,6 @@ export const InputSearch = ({ ...rest }: InputProps) => {
       px='8'
       ml='6'
       width={400}
-      alignSelf='center'
       color='gray.200'
       position='relative'
       bg='gray.800'
