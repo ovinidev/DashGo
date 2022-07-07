@@ -22,7 +22,7 @@ export const Input = ({ name, label, ...rest }: InputProps) => {
         bgColor='gray.900'
         variant='filled'
         _hover={{
-          bgColor: 'gray.900'
+          filter: 'brightness(0.9)'
         }}
         size='lg'
         {...rest}
