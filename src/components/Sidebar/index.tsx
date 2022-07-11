@@ -1,31 +1,37 @@
-import { Flex, Stack } from "@chakra-ui/react";
-import {
-  RiContactsLine,
-  RiDashboardLine,
-  RiGitMergeLine,
-  RiInputMethodLine
-} from "react-icons/ri";
-import { Link } from "./Link";
-import { Section } from "./Section";
+import { Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { useSidebar } from "../context/useSidebar";
+
+import { SidebarNav } from "./SidebarNav";
 
 export const Sidebar = () => {
+  const { isOpen, onClose, isDrawerSidebar } = useSidebar()
+
+  if (isDrawerSidebar) {
+    return (
+      <Drawer isOpen={isOpen} placement='left' onClose={onClose}>
+        <DrawerOverlay>
+          <DrawerContent bg='gray.800' p='4'>
+            <DrawerCloseButton mt='4' />
+            <DrawerHeader>Navegação</DrawerHeader>
+
+            <DrawerBody>
+              <SidebarNav />
+            </DrawerBody>
+
+            <DrawerFooter alignSelf='center'>Vini 2022</DrawerFooter>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
+    )
+  }
+
   return (
     <Flex
       as='aside'
       w='64'
       direction='column'
     >
-      <Stack spacing='12'>
-        <Section title='Geral'>
-          <Link title='Dashboard' icon={RiDashboardLine} />
-          <Link title='Usuários' icon={RiContactsLine} />
-        </Section>
-
-        <Section title='Automação'>
-          <Link title='formulários' icon={RiInputMethodLine} />
-          <Link title='Automação' icon={RiGitMergeLine} />
-        </Section>
-      </Stack>
+      <SidebarNav />
     </Flex>
   );
 };

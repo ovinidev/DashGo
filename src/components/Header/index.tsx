@@ -1,10 +1,21 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Icon, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { useSidebar } from "../context/useSidebar";
 import { InputSearch } from "../Form/InputSearch";
 import { Logo } from "./Logo";
 import { Notification } from "./Notification";
 import { Profile } from "./Profile";
+import {
+  GiHamburgerMenu
+} from "react-icons/gi";
 
 export const Header = () => {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true
+  })
+
+  const { onOpen, isDrawerSidebar } = useSidebar();
+
   return (
     <Flex
       as="header"
@@ -16,15 +27,25 @@ export const Header = () => {
       align="center"
       px='6'
     >
+      {isDrawerSidebar &&
+        <IconButton
+          icon={<Icon as={GiHamburgerMenu} />}
+          variant='unstyled'
+          fontSize='2rem'
+          onClick={onOpen}
+          aria-label='open navigation'
+          mr={['0','2', '6', '8']}
+        />
+      }
       <Logo />
-      <InputSearch />
+      {isWideVersion && <InputSearch />}
 
       <Flex
         align='center'
         ml='auto'
       >
         <Notification />
-        <Profile />
+        <Profile showProfileData={isWideVersion} />
       </Flex>
 
     </Flex>

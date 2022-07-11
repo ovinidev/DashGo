@@ -72,7 +72,7 @@ export default function Dashboard() {
         <SimpleGrid
           flex='1'
           gap='4'
-          minChildWidth={'32rem'}
+          minChildWidth={'200px'}
         >
           <Box
             p='8'
