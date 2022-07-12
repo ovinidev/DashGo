@@ -7,19 +7,43 @@ import {
   RiGitMergeLine,
   RiInputMethodLine
 } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 export const SidebarNav = () => {
+  const { asPath } = useRouter()
+  console.log(asPath);
+  
   return (
     <Stack spacing='12'>
-    <Section title='Geral'>
-      <Link title='Dashboard' icon={RiDashboardLine} />
-      <Link title='Usuários' icon={RiContactsLine} />
-    </Section>
+      <Section title='Geral'>
+        <Link
+          title='Dashboard'
+          icon={RiDashboardLine}
+          href={'/dashboard'}
+          asPath={asPath}
+        />
+        <Link
+          title='Usuários'
+          icon={RiContactsLine}
+          href={'/users'}
+          asPath={asPath}
+        />
+      </Section>
 
-    <Section title='Automação'>
-      <Link title='formulários' icon={RiInputMethodLine} />
-      <Link title='Automação' icon={RiGitMergeLine} />
-    </Section>
-  </Stack>
+      <Section title='Automação'>
+        <Link
+          title='formulários'
+          icon={RiInputMethodLine}
+          href={'forms'}
+          asPath={asPath}
+        />
+        <Link
+          title='Automação'
+          icon={RiGitMergeLine}
+          href={'/automation'}
+          asPath={asPath}
+        />
+      </Section>
+    </Stack>
   );
 };

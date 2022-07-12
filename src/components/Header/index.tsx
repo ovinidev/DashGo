@@ -9,12 +9,7 @@ import {
 } from "react-icons/gi";
 
 export const Header = () => {
-  const isWideVersion = useBreakpointValue({
-    base: false,
-    lg: true
-  })
-
-  const { onOpen, isDrawerSidebar } = useSidebar();
+  const { onOpen, isMobile, isDesktop } = useSidebar();
 
   return (
     <Flex
@@ -27,7 +22,7 @@ export const Header = () => {
       align="center"
       px='6'
     >
-      {isDrawerSidebar &&
+      {isMobile &&
         <IconButton
           icon={<Icon as={GiHamburgerMenu} />}
           variant='unstyled'
@@ -38,14 +33,14 @@ export const Header = () => {
         />
       }
       <Logo />
-      {isWideVersion && <InputSearch />}
+      {isDesktop && <InputSearch />}
 
       <Flex
         align='center'
         ml='auto'
       >
         <Notification />
-        <Profile showProfileData={isWideVersion} />
+        <Profile showProfileData={isDesktop} />
       </Flex>
 
     </Flex>

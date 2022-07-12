@@ -3,8 +3,10 @@ import { Input } from "../../components/Form/Input";
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { Title } from "../../components/Title";
+import NextLink from 'next/link'
 
 export default function Create() {
+
   return (
     <Box>
       <Header />
@@ -12,7 +14,7 @@ export default function Create() {
       <Flex my='6' w='100%' maxWidth={1480} mx='auto' px='6'>
         <Sidebar />
 
-        <Box flex='1' borderRadius={8} bg={'gray.800'} p='8'>
+        <Box w='100%' borderRadius={8} bg={'gray.800'} p='8'>
           <Title text='Criar usuário' />
 
           <Divider my='6' borderColor='gray.700' />
@@ -29,9 +31,14 @@ export default function Create() {
             </SimpleGrid>
           </Stack>
 
-          <HStack spacing='4' mt='8' justify='flex-end'>
-            <Button colorScheme='whiteAlpha' > Cancelar </Button>
-            <Button colorScheme='pink' > Salvar </Button>
+          <HStack spacing='4' mt='8' justify={{ base: 'center', lg: 'flex-end' }}>
+            <NextLink href='/users' passHref>
+              <Button colorScheme='whiteAlpha'> Cancelar </Button>
+            </NextLink>
+
+            <NextLink href='/users' passHref>
+              <Button colorScheme='pink'> Salvar </Button>
+            </NextLink>
           </HStack>
         </Box>
       </Flex>

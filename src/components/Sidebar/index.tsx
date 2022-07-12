@@ -4,10 +4,10 @@ import { useSidebar } from "../context/useSidebar";
 import { SidebarNav } from "./SidebarNav";
 
 export const Sidebar = () => {
-  const { isOpen, onClose, isDrawerSidebar } = useSidebar()
+  const { isOpen, onClose, isMobile } = useSidebar()
 
-  if (isDrawerSidebar) {
-    return (
+  {
+    return isMobile ? (
       <Drawer isOpen={isOpen} placement='left' onClose={onClose}>
         <DrawerOverlay>
           <DrawerContent bg='gray.800' p='4'>
@@ -22,16 +22,14 @@ export const Sidebar = () => {
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
+    ) : (
+      <Flex
+        as='aside'
+        w='64'
+        direction='column'
+      >
+        <SidebarNav />
+      </Flex>
     )
   }
-
-  return (
-    <Flex
-      as='aside'
-      w='64'
-      direction='column'
-    >
-      <SidebarNav />
-    </Flex>
-  );
 };

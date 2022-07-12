@@ -4,7 +4,7 @@ export const theme = extendTheme({
   colors: {
     gray: {
       '50': '#F7FAFC',
-      '100': '#EDF2F7',
+      '100': 'red',
       '200': '#E2E8F0',
       '300': '#CBD5E0',
       '400': '#A0AEC0',
@@ -27,19 +27,20 @@ export const theme = extendTheme({
     heading: 'Roboto',
   },
   fontSizes: {
-    xs: "0.75rem", // 12px
+    "1xs": "0.625rem", // 10px
+    "2xs": "0.75rem", // 12px
     sm: "0.875rem", // 14px
-    md: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-    "2xl": "1.5rem",
-    "3xl": "1.875rem",
-    "4xl": "2.25rem",
-    "5xl": "3rem",
-    "6xl": "3.75rem",
-    "7xl": "4.5rem",
-    "8xl": "6rem",
-    "9xl": "8rem",
+    md: "1rem", // 16px
+    lg: "1.125rem", // 18px
+    xl: "1.25rem", // 20px
+    "2xl": "1.375rem", // 22px
+    "3xl": "1.5rem", // 24px
+    "4xl": "1.625rem", // 26px
+    "5xl": "1.75", // 28px
+    "6xl": "1.875rem", // 30px
+    "7xl": "2rem", // 32px
+    "8xl": "2.125rem", // 34px
+    "9xl": "2.25rem", // 36px
   },
   fontWeights: {
     hairline: 100,

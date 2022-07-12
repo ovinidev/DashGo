@@ -6,7 +6,8 @@ interface SidebarContextData {
   isOpen: boolean,
   onOpen: () => void,
   onClose: () => void,
-  isDrawerSidebar: boolean | undefined
+  isMobile: boolean | undefined,
+  isDesktop: boolean | undefined
 }
 
 interface SidebarProviderProps {
@@ -18,9 +19,14 @@ const SidebarContext = createContext({} as SidebarContextData);
 export const SidebarContextProvider = ({ children }: SidebarProviderProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const isDrawerSidebar = useBreakpointValue({
+  const isMobile = useBreakpointValue({
     base: true,
     lg: false
+  })
+
+  const isDesktop = useBreakpointValue({
+    base: false,
+    lg: true
   })
 
   const { asPath } = useRouter();
@@ -34,7 +40,8 @@ export const SidebarContextProvider = ({ children }: SidebarProviderProps) => {
       isOpen,
       onOpen,
       onClose,
-      isDrawerSidebar
+      isMobile,
+      isDesktop
     }}>
       {children}
     </SidebarContext.Provider>
