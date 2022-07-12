@@ -1,5 +1,5 @@
 import { Flex, Icon, IconButton, useBreakpointValue } from "@chakra-ui/react";
-import { useSidebar } from "../context/useSidebar";
+import { useSidebar } from "../../context/useSidebar";
 import { InputSearch } from "../Form/InputSearch";
 import { Logo } from "./Logo";
 import { Notification } from "./Notification";

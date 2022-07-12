@@ -1,6 +1,6 @@
 import { Box, Button, Flex, HStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { useSidebar } from "../context/useSidebar";
+import { useSidebar } from "../../context/useSidebar";
 import { PaginationItem } from "./PaginationItem";
 
 export const Pagination = () => {
