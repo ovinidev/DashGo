@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 
 export const SidebarNav = () => {
   const { asPath } = useRouter()
-  console.log(asPath);
   
   return (
     <Stack spacing='12'>
