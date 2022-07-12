@@ -5,7 +5,7 @@ import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 import { Title } from "../../components/Title";
-import { UserItem } from "../../components/Users/UserItem";
+import { UserItem } from "../../components/UserItem";
 import NextLink from 'next/link'
 
 export default function Users() {
