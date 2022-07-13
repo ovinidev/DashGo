@@ -9,7 +9,6 @@ interface LinkProps extends ChakraLinkProps {
   asPath: string
 }
 
-
 export const Link = ({ title, icon, href, asPath, ...rest }: LinkProps) => {
   return (
     <NextLink href={href} passHref>

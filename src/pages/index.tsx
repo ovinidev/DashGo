@@ -5,6 +5,7 @@ import {
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../components/Form/Input";
+import { LOGIN_WIDTH } from "../constants/widthScreen";
 
 interface LoginInputs {
   email: string,
@@ -35,9 +36,9 @@ export default function SignIn() {
         as='form'
         onSubmit={handleSubmit(onSubmit)}
         width='100%'
-        maxWidth={360}
+        maxWidth={LOGIN_WIDTH}
         bg='gray.800'
-        p='8'
+        p='10'
         borderRadius={8}
         flexDir='column'
       >

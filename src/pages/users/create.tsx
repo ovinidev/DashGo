@@ -4,6 +4,7 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { Title } from "../../components/Title";
 import NextLink from 'next/link'
+import { FLEX_WIDTH } from "../../constants/widthScreen";
 
 export default function Create() {
 
@@ -11,7 +12,7 @@ export default function Create() {
     <Box>
       <Header />
 
-      <Flex my='6' w='100%' maxWidth={1480} mx='auto' px='6'>
+      <Flex my='6' w='100%' maxWidth={FLEX_WIDTH} mx='auto' px='6'>
         <Sidebar />
 
         <Box w='100%' borderRadius={8} bg={'gray.800'} p='8'>

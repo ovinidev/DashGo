@@ -1,4 +1,4 @@
-import { Flex, Icon, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Icon, IconButton } from "@chakra-ui/react";
 import { useSidebar } from "../../context/useSidebar";
 import { InputSearch } from "../Form/InputSearch";
 import { Logo } from "./Logo";
@@ -7,6 +7,7 @@ import { Profile } from "./Profile";
 import {
   GiHamburgerMenu
 } from "react-icons/gi";
+import { FLEX_WIDTH } from "../../constants/widthScreen";
 
 export const Header = () => {
   const { onOpen, isMobile, isDesktop } = useSidebar();
@@ -15,9 +16,9 @@ export const Header = () => {
     <Flex
       as="header"
       w="100%"
-      maxWidth={1480}
-      h='20'
+      maxWidth={FLEX_WIDTH}
       mx='auto'
+      h='20'
       mt='4'
       align="center"
       px='6'
