@@ -92,7 +92,7 @@ export default function Dashboard() {
             p='8'
             bg='gray.800'
             borderRadius={8}>
-            <Text fontSize='' mb='4'>Taxa de abertura</Text>
+            <Text fontSize='lg' mb='4'>Taxa de abertura</Text>
             <Chart
               type='area'
               height={160}

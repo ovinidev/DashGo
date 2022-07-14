@@ -1,12 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const users = [
-    { id: 1, name: 'vini' },
-    { id: 2, name: 'thales' },
-    { id: 3, name: 'jorge' },
-    { id: 4, name: 'gustavo' },
-  ];
+  const users =  { id: 1, name: 'vini' }
 
   return res.status(200).json(users);
 };

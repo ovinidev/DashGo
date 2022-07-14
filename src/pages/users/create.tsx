@@ -34,11 +34,11 @@ export default function Create() {
 
           <HStack spacing='4' mt='8' justify={{ base: 'center', lg: 'flex-end' }}>
             <NextLink href='/users' passHref>
-              <Button colorScheme='whiteAlpha'> Cancelar </Button>
+              <Button colorScheme='whiteAlpha'>Cancelar</Button>
             </NextLink>
 
             <NextLink href='/users' passHref>
-              <Button colorScheme='pink'> Salvar </Button>
+              <Button colorScheme='pink'>Salvar</Button>
             </NextLink>
           </HStack>
         </Box>
