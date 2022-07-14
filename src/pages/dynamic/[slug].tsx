@@ -1,7 +1,12 @@
 import { Box, Text } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
 
-export default function Slug({ post, slug }: any) {
+interface DynamicProps {
+  post: string,
+  slug: string
+}
+
+export default function Slug({post, slug}: DynamicProps) {
   return (
     <Box>
       <Text>{post}</Text>
