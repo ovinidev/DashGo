@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
-import { SidebarContextProvider } from '../context/useSidebar'
+import { SidebarContextProvider } from '../contexts/useSidebar'
 import { theme } from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {

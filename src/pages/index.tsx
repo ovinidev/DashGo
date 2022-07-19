@@ -8,18 +8,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from "../components/Form/Input";
 import { LOGIN_WIDTH } from "../constants/widthScreen";
 import { loginSchema } from "../validation/schema";
-import { useEffect, useState } from "react";
-import { Data, getUsers } from "../api";
-interface LoginInputs {
-  email: string,
-  password: string,
-};
+import { LoginInputs } from "../interfaces/hookForm";
 
 export default function SignIn() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isSubmitting }
   } = useForm<LoginInputs>({
     resolver: yupResolver(loginSchema)
@@ -27,27 +21,6 @@ export default function SignIn() {
   const onSubmit: SubmitHandler<LoginInputs> = (data) => {
     console.log(data)
   };
-
-  const [userData, setUserData] = useState<Data[]>([])
-
-  console.log(userData)
-
-  userData.map(item => {
-    console.log(item.name);
-    
-  })
-
-  useEffect(() => {
-    (async function get() {
-      try {
-        const data = await getUsers();
-        setUserData(data)
-      } catch (err: any) {
-        console.log(err);
-      }
-    }())
-  }, [])
-
 
   return (
     <Flex

@@ -1,5 +1,5 @@
 import { Flex, Icon, IconButton } from "@chakra-ui/react";
-import { useSidebar } from "../../context/useSidebar";
+import { useSidebar } from "../../contexts/useSidebar";
 import { InputSearch } from "../Form/InputSearch";
 import { Logo } from "./Logo";
 import { Notification } from "./Notification";
@@ -30,7 +30,7 @@ export const Header = () => {
           fontSize='2rem'
           onClick={onOpen}
           aria-label='open navigation'
-          mr={['0','2', '6', '8']}
+          mr={['0','2','6','8']}
         />
       }
       <Logo />

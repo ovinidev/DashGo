@@ -1,11 +1,11 @@
 import { Box, Button, Checkbox, Icon, Td, Text, Tr } from "@chakra-ui/react";
 import { RiPencilLine } from "react-icons/ri";
+import { useSidebar } from "../../contexts/useSidebar";
 
 interface UserItemProps {
   name: string,
   email: string,
   date: string,
-  isDesktop: boolean | undefined
 }
 
 export const UserItem = (
@@ -13,8 +13,9 @@ export const UserItem = (
     name,
     email,
     date,
-    isDesktop
   }: UserItemProps) => {
+  const { isDesktop } = useSidebar();
+
   return (
     <Tr>
       <Td px={['0', '2', '4', '6']}>
