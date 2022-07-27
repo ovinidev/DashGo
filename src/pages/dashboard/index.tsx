@@ -4,6 +4,7 @@ import { Sidebar } from "../../components/Sidebar";
 import dynamic from 'next/dynamic'
 import { ApexOptions } from 'apexcharts';
 import { FLEX_WIDTH } from "../../constants/widthScreen";
+import { FlexMotion } from "../../components/Motion/FlexMotion";
 
 export default function Dashboard() {
   const Chart = dynamic(() => import('react-apexcharts'), {
@@ -61,8 +62,8 @@ export default function Dashboard() {
   ]
 
   return (
-    <Flex
-      direction="column"
+    <FlexMotion
+      flexDirection="column"
       h='100vh'
     >
       <Header />
@@ -102,6 +103,6 @@ export default function Dashboard() {
           </Box>
         </SimpleGrid>
       </Flex>
-    </Flex>
+    </FlexMotion>
   );
 };

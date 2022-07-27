@@ -18,24 +18,25 @@ export const UserItem = (
 
   return (
     <Tr>
-      <Td px={['0', '2', '4', '6']}>
+      <Td px={{ base: '0', sm: '2', lg: '4' }}>
         <Checkbox colorScheme='pink' />
       </Td>
-      <Td px={['0', '2', '4', '6']}>
+      <Td px={{ base: '0', sm: '2', lg: '4' }}>
         <Box>
-          <Text fontWeight='bold' fontSize={['2xs', 'sm','md']}>{name}</Text>
-          <Text fontSize={['1xs','2xs','sm']} color='gray.300'>{email}</Text>
+          <Text fontWeight='bold' fontSize={['2xs', 'sm', 'md']}>{name}</Text>
+          <Text fontSize={['1xs', '2xs', 'sm']} color='gray.300'>{email}</Text>
         </Box>
       </Td>
       {isDesktop &&
         <Td>{date}</Td>
       }
-      <Td>
+      <Td px={{ base: 0 }}>
         <Button
           size='sm'
           fontSize='sm'
           colorScheme='whiteAlpha'
-          leftIcon={<Icon fontSize='20' as={RiPencilLine} />}
+          px={{ base: 0, lg: '2' }}
+          leftIcon={<Icon ml={{ base: '7px', xl: '7px', '2xl': 0 }} fontSize='20' as={RiPencilLine} />}
         >
           {isDesktop && 'Editar'}
         </Button>

@@ -9,6 +9,7 @@ import { Input } from "../components/Form/Input";
 import { LOGIN_WIDTH } from "../constants/widthScreen";
 import { loginSchema } from "../validation/schema";
 import { LoginInputs } from "../interfaces/hookForm";
+import { FlexMotion } from "../components/Motion/FlexMotion";
 
 export default function SignIn() {
   const {
@@ -23,11 +24,11 @@ export default function SignIn() {
   };
 
   return (
-    <Flex
+    <FlexMotion
       w='100vw'
       h='100vh'
-      align='center'
-      justify='center'
+      alignItems='center'
+      justifyContent='center'
     >
       <Flex
         as='form'
@@ -42,14 +43,12 @@ export default function SignIn() {
         <Stack spacing='4'>
           <Input
             {...register("email")}
-            name="email"
             type="email"
             label="Email"
             errors={errors.email}
           />
           <Input
             {...register("password")}
-            name="password"
             type="password"
             label="Senha"
             errors={errors.password}
@@ -65,6 +64,6 @@ export default function SignIn() {
           Entrar
         </Button>
       </Flex>
-    </Flex>
+    </FlexMotion>
   )
 }

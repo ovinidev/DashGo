@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createUserSchema } from "../../validation/schema";
 import { CreateUserInput } from "../../interfaces/hookForm";
+import { BoxMotion } from "../../components/Motion/BoxMotion";
 
 export default function Create() {
   const {
@@ -21,7 +22,7 @@ export default function Create() {
   const onSubmit = (data: CreateUserInput) => console.log(data);
 
   return (
-    <Box>
+    <BoxMotion>
       <Header />
 
       <Flex my='6' w='100%' maxWidth={FLEX_WIDTH} mx='auto' px='6'>
@@ -83,6 +84,6 @@ export default function Create() {
           </HStack>
         </Box>
       </Flex>
-    </Box>
+    </BoxMotion>
   )
 }

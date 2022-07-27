@@ -22,12 +22,12 @@ export const SidebarContextProvider = ({ children }: SidebarProviderProps) => {
 
   const isMobile = useBreakpointValue({
     base: true,
-    lg: false
+    '2xl': false
   })
 
   const isDesktop = useBreakpointValue({
     base: false,
-    lg: true
+    '2xl': true
   })
 
   const { asPath } = useRouter();

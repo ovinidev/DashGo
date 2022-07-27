@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Flex, Heading, Icon, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { useSidebar } from "../../contexts/useSidebar";
 import { Header } from "../../components/Header";
@@ -8,12 +8,25 @@ import { Title } from "../../components/Title";
 import { UserItem } from "../../components/UserItem";
 import NextLink from 'next/link'
 import { FLEX_WIDTH } from "../../constants/widthScreen";
+import { useEffect } from "react";
+import { useQuery } from '@tanstack/react-query'
+import { BoxMotion } from "../../components/Motion/BoxMotion";
+import { IUsers } from "../../interfaces/users";
 
 export default function Users() {
   const { isDesktop } = useSidebar();
 
+  const { data, isLoading, error } = useQuery(['users'], async () => {
+    const response = await fetch('api/users')
+    const data = await response.json()
+
+    return data;
+  });
+
+  console.log(data, isLoading, error);
+
   return (
-    <Box>
+    <BoxMotion>
       <Header />
       <Flex my='6' w='100%' maxWidth={FLEX_WIDTH} mx='auto' px='6'>
         <Sidebar />
@@ -30,56 +43,57 @@ export default function Users() {
                 colorScheme='pink'
                 leftIcon={<Icon fontSize='20' as={RiAddLine} />}
               >
-                Cria novo
+                Criar novo
               </Button>
             </NextLink>
           </Flex>
 
-          <Table colorScheme='whiteAlpha'>
-            <Thead>
-              <Tr>
-                <Th px={['0', '2', '4', '6']} color='gray.300' w='8'>
-                  <Checkbox colorScheme='pink' />
-                </Th>
-                <Th>
-                  Usuário
-                </Th>
-                {isDesktop &&
-                  <Th>
-                    Data de cadastro
-                  </Th>
-                }
-                <Th w='8'></Th>
-              </Tr>
-            </Thead>
-
-            <Tbody>
-              <UserItem
-                name='Vinicius Medeiros'
-                email='vinimedeiros@gmail.com'
-                date='14 de abril 2022'
-              />
-              <UserItem
-                name='Vinicius Medeiros'
-                email='vinimedeiros@gmail.com'
-                date='14 de abril 2022'
-              />
-              <UserItem
-                name='Vinicius Medeiros'
-                email='vinimedeiros@gmail.com'
-                date='14 de abril 2022'
-              />
-              <UserItem
-                name='Vinicius Medeiros'
-                email='vinimedeiros@gmail.com'
-                date='14 de abril 2022'
-              />
-            </Tbody>
-          </Table>
-
-          <Pagination />
+          {isLoading ? (
+            <Flex justify='center' align='center'>
+              <Spinner />
+            </Flex>
+          ) : error ? (
+            <Flex justify='center' align='center'>
+              <Text>Deu erro ao pegar os dados</Text>
+            </Flex>
+          ) : (
+            (
+              <>
+                <Table colorScheme='whiteAlpha'>
+                  <Thead>
+                    <Tr>
+                      <Th px={{ base: '0', sm: '2', lg: '4' }} color='gray.300' w='8'>
+                        <Checkbox colorScheme='pink' />
+                      </Th>
+                      <Th>
+                        Usuário
+                      </Th>
+                      {isDesktop &&
+                        <Th>
+                          Data de cadastro
+                        </Th>
+                      }
+                      <Th w='8'></Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    {data.users.map((user: IUsers) => {
+                      return (
+                        <UserItem
+                          key={user.id}
+                          name={user.name}
+                          email={user.email}
+                          date={user.createdAt}
+                        />
+                      )
+                    })}
+                  </Tbody>
+                </Table>
+                <Pagination />
+              </>
+            ))}
         </Box>
       </Flex>
-    </Box>
+    </BoxMotion>
   )
 }
