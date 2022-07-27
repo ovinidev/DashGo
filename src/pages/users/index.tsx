@@ -8,22 +8,19 @@ import { Title } from "../../components/Title";
 import { UserItem } from "../../components/UserItem";
 import NextLink from 'next/link'
 import { FLEX_WIDTH } from "../../constants/widthScreen";
-import { useEffect } from "react";
 import { useQuery } from '@tanstack/react-query'
 import { BoxMotion } from "../../components/Motion/BoxMotion";
 import { IUsers } from "../../interfaces/users";
+import { getUsers } from "../../services/axios/axiosInstance";
 
 export default function Users() {
   const { isDesktop } = useSidebar();
 
   const { data, isLoading, error } = useQuery(['users'], async () => {
-    const response = await fetch('api/users')
-    const data = await response.json()
+    const data = await getUsers();
 
     return data;
   });
-
-  console.log(data, isLoading, error);
 
   return (
     <BoxMotion>
