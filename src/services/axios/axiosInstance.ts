@@ -2,7 +2,7 @@ import axios from 'axios';
 import { IUsersMirage } from '../../interfaces/users';
 
 export const axiosInstance = axios.create({
-  baseURL: 'api'
+  baseURL: 'mirage'
 });
 
 export const getUsers = async () => {

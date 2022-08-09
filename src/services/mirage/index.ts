@@ -32,7 +32,7 @@ export function makeServer() {
     },
 
     routes() {
-      this.namespace = 'api';
+      this.namespace = 'mirage';
       this.timing = 750;
 
       this.get('/users', function (schema, request) {
