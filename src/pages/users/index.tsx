@@ -10,7 +10,7 @@ import NextLink from 'next/link'
 import { FLEX_WIDTH } from "../../constants/widthScreen";
 import { BoxMotion } from "../../components/Motion/BoxMotion";
 import { IUsers } from "../../interfaces/users";
-import { useUsers } from "./useUsers";
+import { useUsers } from "../../hooks/useUsers";
 
 export default function Users() {
   const { isDesktop } = useSidebar();

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getUsers } from '../../services/axios/axiosInstance';
+import { getUsers } from '../services/axios/axiosInstance';
 
 export const getUsersList = async () => {
   const data = await getUsers();
