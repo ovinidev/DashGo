@@ -3,9 +3,36 @@ import { useState } from "react";
 import { useSidebar } from "../../contexts/useSidebar";
 import { PaginationItem } from "./PaginationItem";
 
-export const Pagination = () => {
+interface PaginationProps {
+  totalCountOfRegisters: number,
+  registerPerPage?: number,
+  currentPage?: number,
+  onPageChange: (page: number) => void,
+}
+
+export const Pagination = ({
+  totalCountOfRegisters,
+  registerPerPage = 10,
+  currentPage = 1,
+  onPageChange
+}: PaginationProps) => {
+  const lastPage = Math.floor(totalCountOfRegisters / registerPerPage);
+
+  const siblingsCount = 1
+
+  const generatePagesArray = (from: number, to: number) => {
+    return [...new Array(siblingsCount)]
+    .map((_, index) => {
+      return from + index + 1
+    })
+    .filter(page => page > 0)
+  }
+
+  const previousPage = currentPage > 1 
+  ? generatePagesArray(currentPage - 1 - siblingsCount, currentPage - 1)
+  : [];
+
   const [page, setPage] = useState(1);
-  const { onOpen, isMobile, isDesktop } = useSidebar();
 
   const handlePage = (number: number) => {
     setPage(number)

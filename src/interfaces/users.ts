@@ -4,3 +4,7 @@ export interface IUsers {
   email: string;
   createdAt: string;
 }
+
+export interface IUsersMirage {
+  users: IUsers[];
+}

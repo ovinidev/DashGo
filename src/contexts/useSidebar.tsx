@@ -34,7 +34,7 @@ export const SidebarContextProvider = ({ children }: SidebarProviderProps) => {
 
   useEffect(() => {
     onClose()
-  }, [asPath])
+  }, [asPath, isMobile])
 
   return (
     <SidebarContext.Provider value={{

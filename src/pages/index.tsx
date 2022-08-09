@@ -33,7 +33,7 @@ export default function SignIn() {
       <Flex
         as='form'
         onSubmit={handleSubmit(onSubmit)}
-        width='100%'
+        width={{ base: '80%', lg: '100%' }}
         maxWidth={LOGIN_WIDTH}
         bg='gray.800'
         p='10'
@@ -60,6 +60,9 @@ export default function SignIn() {
           mt='6'
           colorScheme='pink'
           isLoading={isSubmitting}
+          onMouseEnter={() => console.log('mouse')}
+          w={{ base: '80%', lg: '100%', nb: '20%' }}
+          alignSelf='center'
         >
           Entrar
         </Button>

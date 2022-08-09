@@ -21,6 +21,8 @@ export const theme = extendTheme({
     lg: '31.25rem', // 500px
     xl: '37.5rem', // 600px
     '2xl': '43.75rem', // 700px
+    nb: '85.375rem', // 1366px
+    d: '120rem', // 1920px
   },
   fonts: {
     body: 'Roboto',

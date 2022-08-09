@@ -56,7 +56,7 @@ export default function Create() {
               />
             </SimpleGrid>
 
-            <SimpleGrid minChildWidth='200px' gap='8' w='100%'>
+            <SimpleGrid minChildWidth='150px' gap='8' w='100%'>
               <Input
                 label='Senha'
                 type='password'
