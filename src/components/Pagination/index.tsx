@@ -1,57 +1,52 @@
-import { Box, Button, Flex, HStack } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { useSidebar } from "../../contexts/useSidebar";
+import { usePagination } from "../../hooks/usePagination";
 import { PaginationItem } from "./PaginationItem";
 
-interface PaginationProps {
-  totalCountOfRegisters: number,
-  registerPerPage?: number,
-  currentPage?: number,
-  onPageChange: (page: number) => void,
-}
+export const Pagination = () => {
+  const {
+    currentPage,
+    siblingsCount,
+    lastPage,
+    totalCountOfRegisters,
+    previousPages,
+    nextPages,
+  } = usePagination();
 
-export const Pagination = ({
-  totalCountOfRegisters,
-  registerPerPage = 10,
-  currentPage = 1,
-  onPageChange
-}: PaginationProps) => {
-  const lastPage = Math.floor(totalCountOfRegisters / registerPerPage);
-
-  const siblingsCount = 1
-
-  const generatePagesArray = (from: number, to: number) => {
-    return [...new Array(siblingsCount)]
-    .map((_, index) => {
-      return from + index + 1
-    })
-    .filter(page => page > 0)
-  }
-
-  const previousPage = currentPage > 1 
-  ? generatePagesArray(currentPage - 1 - siblingsCount, currentPage - 1)
-  : [];
-
-  const [page, setPage] = useState(1);
-
-  const handlePage = (number: number) => {
-    setPage(number)
-  }
   return (
     <Flex
       mt='8'
       justify='space-between'
       align='center'
-      flexDirection={{base: 'column', lg: 'row'}}
+      flexDirection={{ base: 'column', lg: 'row' }}
     >
-      <Box>
-        <strong>0</strong> - <strong>de</strong> <strong>100</strong>
+      <Box mb={{ base: 1, lg: 0 }}>
+        <strong>{currentPage}</strong> - <strong>de</strong> <strong>{totalCountOfRegisters}</strong>
       </Box>
       <HStack spacing='2'>
-        <PaginationItem number={1} isCurrent={1 === page} onClick={() => handlePage(1)} />
-        <PaginationItem number={2} isCurrent={2 === page} onClick={() => handlePage(2)} />
-        <PaginationItem number={3} isCurrent={3 === page} onClick={() => handlePage(3)} />
-        <PaginationItem number={4} isCurrent={4 === page} onClick={() => handlePage(4)} />
+        {currentPage > (1 + siblingsCount) && (
+          <>
+            <PaginationItem number={1} />
+            {currentPage > (2 + siblingsCount) && <Text w='4' textAlign='center' color='gray.300'>...</Text>}
+          </>
+        )}
+        {
+          previousPages.length > 0 && previousPages.map(page => {
+            return <PaginationItem key={page} number={page} />
+          })
+        }
+        <PaginationItem number={currentPage} isCurrent />
+        {
+          nextPages.length > 0 && nextPages.map(page => {
+            return <PaginationItem key={page} number={page} />
+          })
+        }
+        {currentPage + siblingsCount < lastPage && (
+          <>
+            {(currentPage + 1 + siblingsCount) < lastPage && <Text w='4' textAlign='center' color='gray.300'>...</Text>}
+            <PaginationItem number={lastPage} />
+          </>
+        )}
       </HStack>
     </Flex>
   );

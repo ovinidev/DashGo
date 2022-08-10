@@ -1,6 +1,6 @@
 import { Icon, IconButton } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useSidebar } from "../../contexts/useSidebar";
+import { useSidebar } from "../../hooks/useSidebar";
 
 export const Hamburger = () => {
   const { onOpen } = useSidebar();

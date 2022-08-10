@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { useSidebar } from "../../contexts/useSidebar";
+import { useSidebar } from "../../hooks/useSidebar";
 import { InputSearch } from "../Form/InputSearch";
 import { Logo } from "./Logo";
 import { Notification } from "./Notification";

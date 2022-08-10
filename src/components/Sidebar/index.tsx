@@ -1,5 +1,5 @@
 import { Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, useBreakpointValue } from "@chakra-ui/react";
-import { useSidebar } from "../../contexts/useSidebar";
+import { useSidebar } from "../../hooks/useSidebar";
 
 import { SidebarNav } from "./SidebarNav";
 

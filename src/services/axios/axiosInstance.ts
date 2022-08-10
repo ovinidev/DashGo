@@ -5,8 +5,18 @@ export const axiosInstance = axios.create({
   baseURL: 'mirage'
 });
 
-export const getUsers = async () => {
-  const { data } = await axiosInstance.get<IUsersMirage>('users');
+export const getUsers = async (page: number) => {
+  const { data, headers } = await axiosInstance.get<IUsersMirage>('users', {
+    params: {
+      page: page,
+    }
+  });
   
-  return data.users;
+  const { users } = data;
+  const totalItems = Number(headers['x-total-count']);
+
+  return {
+    users,
+    totalItems
+  }
 }

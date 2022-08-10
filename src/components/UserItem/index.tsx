@@ -1,6 +1,6 @@
 import { Box, Button, Checkbox, Icon, Td, Text, Tr } from "@chakra-ui/react";
 import { RiPencilLine } from "react-icons/ri";
-import { useSidebar } from "../../contexts/useSidebar";
+import { useSidebar } from "../../hooks/useSidebar";
 
 interface UserItemProps {
   name: string,

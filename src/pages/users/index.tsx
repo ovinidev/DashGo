@@ -1,6 +1,6 @@
 import { Box, Button, Checkbox, Flex, Icon, Spinner, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import { RiAddLine } from "react-icons/ri";
-import { useSidebar } from "../../contexts/useSidebar";
+import { useSidebar } from "../../hooks/useSidebar";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
@@ -14,8 +14,7 @@ import { useUsers } from "../../hooks/useUsers";
 
 export default function Users() {
   const { isDesktop } = useSidebar();
-
-  const { data, isLoading, isFetching, error, refetch } = useUsers();
+  const { data, isLoading, error, refetch } = useUsers();
 
   return (
     <BoxMotion>
@@ -27,7 +26,6 @@ export default function Users() {
           <Flex mb='8' justify='space-between' align='center'>
             <Flex align='center' justify='center'>
               <Title text='Usuários' />
-              {!isLoading && isFetching && <Spinner size='sm' color='gray.500' ml='3' />}
             </Flex>
             <NextLink href='/users/create' passHref>
               <Button
@@ -84,7 +82,7 @@ export default function Users() {
                     })}
                   </Tbody>
                 </Table>
-                {/* <Pagination /> */}
+                <Pagination />
               </>
             ))}
         </Box>

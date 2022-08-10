@@ -52,5 +52,9 @@ export const SidebarContextProvider = ({ children }: SidebarProviderProps) => {
 export const useSidebar = () => {
   const context = useContext(SidebarContext);
 
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+
   return context
 }
