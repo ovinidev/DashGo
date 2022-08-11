@@ -14,8 +14,8 @@ import { useUsers } from "../../hooks/useUsers";
 
 export default function Users() {
   const { isDesktop } = useSidebar();
-  const { data, isLoading, error, refetch } = useUsers();
-
+  const { data, isLoading, error } = useUsers();
+  
   return (
     <BoxMotion>
       <Header />
@@ -77,6 +77,7 @@ export default function Users() {
                           name={user.name}
                           email={user.email}
                           date={user.createdAt}
+                          id={user.id.toString()}
                         />
                       )
                     })}

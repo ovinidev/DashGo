@@ -8,3 +8,7 @@ export interface IUsers {
 export interface IUsersMirage {
   users: IUsers[];
 }
+
+export interface IUserMirage {
+  user: IUsers;
+}

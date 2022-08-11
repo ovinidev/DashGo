@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IUsersMirage } from '../../interfaces/users';
+import { IUserMirage, IUsersMirage } from '../../interfaces/users';
 
 export const axiosInstance = axios.create({
   baseURL: 'mirage'
@@ -19,4 +19,10 @@ export const getUsers = async (page: number) => {
     users,
     totalItems
   }
+}
+
+export const getUsersById = async (id: string) => {
+  const { data } = await axiosInstance.get<IUserMirage>(`users/${id}`);
+  
+  return data.user;
 }

@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import { useMemo } from 'react';
 import { getUsers } from '../services/axios/axiosInstance';
 import { usePagination } from './usePagination';
 
@@ -25,6 +24,6 @@ export const useUsers = () => {
 
     return usersList;
   }, {
-    staleTime: 1000 * 5, // 5 seconds
+    staleTime: 1000 * 60 * 10, // 10 minutos
   });
 };
