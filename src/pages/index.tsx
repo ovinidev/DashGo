@@ -19,7 +19,7 @@ export default function SignIn() {
   } = useForm<LoginInputs>({
     resolver: yupResolver(loginSchema)
   });
-  const onSubmit: SubmitHandler<LoginInputs> = (data) => {
+  const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
     console.log(data)
   };
 

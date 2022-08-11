@@ -8,13 +8,13 @@ export const useUsers = () => {
   return useQuery(['users', { page: currentPage }], async () => {
     const { users, totalItems } = await getUsers(currentPage);
     setTotalCountOfRegisters(totalItems);
-
+    
     const usersList = users.map(user => {
       return {
         id: user.id,
         name: user.name,
         email: user.email,
-        createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
+        created_at: new Date(user.created_at).toLocaleDateString('pt-BR', {
           day: '2-digit',
           month: '2-digit',
           year: 'numeric'
@@ -24,6 +24,6 @@ export const useUsers = () => {
 
     return usersList;
   }, {
-    staleTime: 1000 * 60 * 10, // 10 minutos
+    staleTime: 1000 * 60 * 5, // 5 minutos
   });
 };

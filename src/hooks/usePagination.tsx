@@ -31,7 +31,7 @@ export const PaginationProvider = ({ children }: ExampleContextProps) => {
 
   const [totalCountOfRegisters, setTotalCountOfRegisters] = useState<number>(0);
 
-  const lastPage = Math.floor(totalCountOfRegisters / registerPerPage);
+  const lastPage = Math.ceil(totalCountOfRegisters / registerPerPage);
 
   const generatePagesArray = (from: number, to: number) => {
     return [...new Array(to - from)]

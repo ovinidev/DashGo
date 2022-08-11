@@ -76,7 +76,7 @@ export default function Users() {
                           key={user.id}
                           name={user.name}
                           email={user.email}
-                          date={user.createdAt}
+                          date={user.created_at}
                           id={user.id.toString()}
                         />
                       )
