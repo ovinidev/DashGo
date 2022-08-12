@@ -3,7 +3,7 @@ import { CreateUserInput } from '../../interfaces/hookForm';
 import { IUserMirage, IUsersMirage } from '../../interfaces/users';
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/mirage'
+  baseURL: '/mirage'
 });
 
 export const getUsers = async (page: number) => {

@@ -15,7 +15,7 @@ import { useUsers } from "../../hooks/useUsers";
 export default function Users() {
   const { isDesktop } = useSidebar();
   const { data, isLoading, error } = useUsers();
-  
+
   return (
     <BoxMotion>
       <Header />
