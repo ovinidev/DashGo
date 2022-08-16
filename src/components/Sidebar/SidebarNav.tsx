@@ -1,43 +1,43 @@
-import { Stack } from "@chakra-ui/react";
-import { Link } from "./Link";
-import { Section } from "./Section";
+import { Stack } from '@chakra-ui/react';
+import { Link } from './Link';
+import { Section } from './Section';
 import {
   RiContactsLine,
   RiDashboardLine,
   RiGitMergeLine,
-  RiInputMethodLine
-} from "react-icons/ri";
-import { useRouter } from "next/router";
+  RiInputMethodLine,
+} from 'react-icons/ri';
+import { useRouter } from 'next/router';
 
 export const SidebarNav = () => {
-  const { asPath } = useRouter()
-  
+  const { asPath } = useRouter();
+
   return (
-    <Stack spacing='12'>
-      <Section title='Geral'>
+    <Stack spacing="12">
+      <Section title="Geral">
         <Link
-          title='Dashboard'
+          title="Dashboard"
           icon={RiDashboardLine}
           href={'/dashboard'}
           asPath={asPath}
         />
         <Link
-          title='Usuários'
+          title="Usuários"
           icon={RiContactsLine}
           href={'/users'}
           asPath={asPath}
         />
       </Section>
 
-      <Section title='Automação'>
+      <Section title="Automação">
         <Link
-          title='formulários'
+          title="formulários"
           icon={RiInputMethodLine}
           href={'forms'}
           asPath={asPath}
         />
         <Link
-          title='Automação'
+          title="Automação"
           icon={RiGitMergeLine}
           href={'/automation'}
           asPath={asPath}

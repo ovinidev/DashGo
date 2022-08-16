@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useBreakpointValue, useDisclosure } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { createContext, ReactNode, useContext, useEffect } from "react";
+import { useBreakpointValue, useDisclosure } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { createContext, ReactNode, useContext, useEffect } from 'react';
 
 interface SidebarContextData {
-  isOpen: boolean,
-  onOpen: () => void,
-  onClose: () => void,
-  isMobile: boolean | undefined,
-  isDesktop: boolean | undefined
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  isMobile: boolean | undefined;
+  isDesktop: boolean | undefined;
 }
 
 interface SidebarProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const SidebarContext = createContext({} as SidebarContextData);
@@ -22,32 +22,34 @@ export const SidebarContextProvider = ({ children }: SidebarProviderProps) => {
 
   const isMobile = useBreakpointValue({
     base: true,
-    '2xl': false
-  })
+    '2xl': false,
+  });
 
   const isDesktop = useBreakpointValue({
     base: false,
-    '2xl': true
-  })
+    '2xl': true,
+  });
 
   const { asPath } = useRouter();
 
   useEffect(() => {
-    onClose()
-  }, [asPath, isMobile])
+    onClose();
+  }, [asPath, isMobile]);
 
   return (
-    <SidebarContext.Provider value={{
-      isOpen,
-      onOpen,
-      onClose,
-      isMobile,
-      isDesktop
-    }}>
+    <SidebarContext.Provider
+      value={{
+        isOpen,
+        onOpen,
+        onClose,
+        isMobile,
+        isDesktop,
+      }}
+    >
       {children}
     </SidebarContext.Provider>
-  )
-}
+  );
+};
 
 export const useSidebar = () => {
   const context = useContext(SidebarContext);
@@ -56,5 +58,5 @@ export const useSidebar = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
 
-  return context
-}
+  return context;
+};

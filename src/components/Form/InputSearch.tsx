@@ -1,38 +1,36 @@
 import {
   Flex,
   Icon,
-  Input as ChakraInput,
-  InputProps as ChakraInputProps
+  Input,
+  InputGroup,
+  InputRightElement
 } from "@chakra-ui/react";
 
 import { RiSearchLine } from 'react-icons/ri'
 
-interface InputProps extends ChakraInputProps {
-}
-
-export const InputSearch = ({ ...rest }: InputProps) => {
+export const InputSearch = () => {
   return (
-    <Flex
+    <InputGroup
       as='label'
-      py='4'
-      px='8'
+      pl='8'
       ml='6'
-      width={400}
+      w={400}
+      h={50}
       color='gray.200'
-      position='relative'
       bg='gray.800'
       borderRadius='full'
-      align='center'
+      size='lg'
     >
-      <ChakraInput
+      <Input
         color='gray.50'
         variant='unstyled'
         mr='4'
         placeholder='Buscar na plataforma'
         _placeholder={{ color: 'gray.400' }}
-        {...rest}
       />
-      <Icon as={RiSearchLine} fontSize='20' />
-    </Flex>
+      <InputRightElement>
+        <Icon as={RiSearchLine} fontSize='20' mr='4'/>
+      </InputRightElement>
+    </InputGroup>
   );
 };

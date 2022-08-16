@@ -1,20 +1,26 @@
-import { createServer, Factory, Model, Response, ActiveModelSerializer } from 'miragejs';
+import {
+  createServer,
+  Factory,
+  Model,
+  Response,
+  ActiveModelSerializer,
+} from 'miragejs';
 import { faker } from '@faker-js/faker';
 
 type User = {
-  name: string,
-  email: string,
-  created_at: string,
-}
+  name: string;
+  email: string;
+  created_at: string;
+};
 
 export function makeServer() {
   const server = createServer({
     serializers: {
       application: ActiveModelSerializer,
     },
-    
+
     models: {
-      user: Model.extend<Partial<User>>({})
+      user: Model.extend<Partial<User>>({}),
     },
 
     factories: {
@@ -28,7 +34,7 @@ export function makeServer() {
         createdAt() {
           return faker.date.recent(10);
         },
-      })
+      }),
     },
 
     seeds(server) {
@@ -47,17 +53,14 @@ export function makeServer() {
 
         const pageStart = (Number(page) - 1) * Number(per_page);
         const pageEnd = pageStart + Number(per_page);
-        
-        // @ts-ignore
-        const users = this.serialize(schema.all('user'))
-        .users
-        .slice(pageStart, pageEnd);
 
-        return new Response(
-          200,
-          { 'x-total-count': String(total) },
-          { users }
-        )
+        // @ts-ignore
+        const users = this.serialize(schema.all('user')).users.slice(
+          pageStart,
+          pageEnd,
+        );
+
+        return new Response(200, { 'x-total-count': String(total) }, { users });
       });
 
       this.get('/users/:id');
@@ -65,8 +68,8 @@ export function makeServer() {
 
       this.namespace = '';
       this.passthrough();
-    }
-  })
+    },
+  });
 
   return server;
 }

@@ -7,22 +7,23 @@ const ChakraFlex = chakra(motion.div, {
 });
 
 interface FlexMotionProps extends FlexProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const FlexMotion = ({ children, ...rest }: FlexMotionProps) => {
   return (
     <ChakraFlex
-      display='flex'
+      display="flex"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       // @ts-ignore no problem in operation, although type error appears.
       transition={{
         duration: 0.6,
-        ease: "easeIn",
+        ease: 'easeIn',
       }}
-      {...rest}>
+      {...rest}
+    >
       {children}
     </ChakraFlex>
   );

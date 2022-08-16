@@ -1,14 +1,15 @@
 import {
   createContext,
-  Dispatch, ReactNode,
+  Dispatch,
+  ReactNode,
   SetStateAction,
   useContext,
-  useState
+  useState,
 } from 'react';
 
 type ExampleContextProps = {
   children: ReactNode;
-}
+};
 
 type ExampleContextData = {
   currentPage: number;
@@ -18,8 +19,8 @@ type ExampleContextData = {
   lastPage: number;
   previousPages: number[];
   nextPages: number[];
-  setTotalCountOfRegisters: Dispatch<SetStateAction<number>>
-}
+  setTotalCountOfRegisters: Dispatch<SetStateAction<number>>;
+};
 
 const PaginationContext = createContext({} as ExampleContextData);
 
@@ -36,30 +37,37 @@ export const PaginationProvider = ({ children }: ExampleContextProps) => {
   const generatePagesArray = (from: number, to: number) => {
     return [...new Array(to - from)]
       .map((_, index) => {
-        return from + index + 1
+        return from + index + 1;
       })
-      .filter(page => page > 0)
-  }
+      .filter((page) => page > 0);
+  };
 
-  const previousPages = currentPage > 1
-    ? generatePagesArray(currentPage - 1 - siblingsCount, currentPage - 1)
-    : [];
+  const previousPages =
+    currentPage > 1
+      ? generatePagesArray(currentPage - 1 - siblingsCount, currentPage - 1)
+      : [];
 
-  const nextPages = currentPage < lastPage
-    ? generatePagesArray(currentPage, Math.min(currentPage + siblingsCount, lastPage))
-    : [];
+  const nextPages =
+    currentPage < lastPage
+      ? generatePagesArray(
+          currentPage,
+          Math.min(currentPage + siblingsCount, lastPage),
+        )
+      : [];
 
   return (
-    <PaginationContext.Provider value={{
-      currentPage,
-      setCurrentPage,
-      siblingsCount,
-      totalCountOfRegisters,
-      lastPage,
-      previousPages,
-      nextPages,
-      setTotalCountOfRegisters
-    }}>
+    <PaginationContext.Provider
+      value={{
+        currentPage,
+        setCurrentPage,
+        siblingsCount,
+        totalCountOfRegisters,
+        lastPage,
+        previousPages,
+        nextPages,
+        setTotalCountOfRegisters,
+      }}
+    >
       {children}
     </PaginationContext.Provider>
   );
@@ -69,7 +77,7 @@ export const usePagination = () => {
   const context = useContext(PaginationContext);
 
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('usePagination must be used within an PaginationProvider');
   }
 
   return context;

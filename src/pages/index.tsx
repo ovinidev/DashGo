@@ -1,54 +1,45 @@
-import {
-  Flex,
-  Button,
-  Stack,
-} from "@chakra-ui/react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Flex, Button, Stack } from '@chakra-ui/react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Input } from "../components/Form/Input";
-import { LOGIN_WIDTH } from "../constants/widthScreen";
-import { loginSchema } from "../validation/schema";
-import { LoginInputs } from "../interfaces/hookForm";
-import { FlexMotion } from "../components/Motion/FlexMotion";
+import { Input } from '../components/Form/Input';
+import { LOGIN_WIDTH } from '../constants/widthScreen';
+import { loginSchema } from '../validation/schema';
+import { LoginInputs } from '../interfaces/hookForm';
+import { FlexMotion } from '../components/Motion/FlexMotion';
 
 export default function SignIn() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm<LoginInputs>({
-    resolver: yupResolver(loginSchema)
+    resolver: yupResolver(loginSchema),
   });
   const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
-    console.log(data)
+    console.log(data);
   };
 
   return (
-    <FlexMotion
-      w='100vw'
-      h='100vh'
-      alignItems='center'
-      justifyContent='center'
-    >
+    <FlexMotion w="100vw" h="100vh" alignItems="center" justifyContent="center">
       <Flex
-        as='form'
+        as="form"
         onSubmit={handleSubmit(onSubmit)}
         width={{ base: '80%', lg: '100%' }}
         maxWidth={LOGIN_WIDTH}
-        bg='gray.800'
-        p='10'
+        bg="gray.800"
+        p="10"
         borderRadius={8}
-        flexDir='column'
+        flexDir="column"
       >
-        <Stack spacing='4'>
+        <Stack spacing="4">
           <Input
-            {...register("email")}
+            {...register('email')}
             type="email"
             label="Email"
             errors={errors.email}
           />
           <Input
-            {...register("password")}
+            {...register('password')}
             type="password"
             label="Senha"
             errors={errors.password}
@@ -56,17 +47,17 @@ export default function SignIn() {
         </Stack>
 
         <Button
-          type='submit'
-          mt='6'
-          colorScheme='pink'
+          type="submit"
+          mt="6"
+          colorScheme="pink"
           isLoading={isSubmitting}
           onMouseEnter={() => console.log('mouse')}
           w={{ base: '80%', lg: '100%', nb: '20%' }}
-          alignSelf='center'
+          alignSelf="center"
         >
           Entrar
         </Button>
       </Flex>
     </FlexMotion>
-  )
+  );
 }

@@ -7,7 +7,7 @@ const ChakraBox = chakra(motion.div, {
 });
 
 interface BoxMotionProps extends BoxProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const BoxMotion = ({ children, ...rest }: BoxMotionProps) => {
@@ -19,9 +19,10 @@ export const BoxMotion = ({ children, ...rest }: BoxMotionProps) => {
       // @ts-ignore no problem in operation, although type error appears.
       transition={{
         duration: 0.7,
-        ease: "easeIn",
+        ease: 'easeIn',
       }}
-      {...rest}>
+      {...rest}
+    >
       {children}
     </ChakraBox>
   );

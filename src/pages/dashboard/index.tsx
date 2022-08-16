@@ -1,32 +1,32 @@
-import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
-import { Header } from "../../components/Header";
-import { Sidebar } from "../../components/Sidebar";
-import dynamic from 'next/dynamic'
+import { Box, Flex, SimpleGrid, Text, theme } from '@chakra-ui/react';
+import { Header } from '../../components/Header';
+import { Sidebar } from '../../components/Sidebar';
+import dynamic from 'next/dynamic';
 import { ApexOptions } from 'apexcharts';
-import { FLEX_WIDTH } from "../../constants/widthScreen";
-import { FlexMotion } from "../../components/Motion/FlexMotion";
+import { FLEX_WIDTH } from '../../constants/widthScreen';
+import { FlexMotion } from '../../components/Motion/FlexMotion';
 
 export default function Dashboard() {
   const Chart = dynamic(() => import('react-apexcharts'), {
-    ssr: false
-  })
+    ssr: false,
+  });
 
   const options: ApexOptions = {
     chart: {
       toolbar: {
-        show: false
+        show: false,
       },
       zoom: { enabled: false },
-      foreColor: theme.colors.gray[500]
+      foreColor: theme.colors.gray[500],
     },
     grid: {
-      show: false
+      show: false,
     },
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     tooltip: {
-      enabled: false
+      enabled: false,
     },
     xaxis: {
       type: 'datetime',
@@ -34,7 +34,7 @@ export default function Dashboard() {
         color: theme.colors.gray[600],
       },
       axisTicks: {
-        color: theme.colors.gray[600]
+        color: theme.colors.gray[600],
       },
       categories: [
         '2021-03-18T00:00:00.000z',
@@ -44,7 +44,7 @@ export default function Dashboard() {
         '2021-03-22T00:00:00.000z',
         '2021-03-23T00:00:00.000z',
         '2021-03-24T00:00:00.000z',
-      ]
+      ],
     },
     fill: {
       opacity: 0.3,
@@ -53,56 +53,34 @@ export default function Dashboard() {
         shade: 'dark',
         opacityFrom: 0.7,
         opacityTo: 0.3,
-      }
-    }
+      },
+    },
   };
 
-  const series = [
-    { name: 'series1', data: [31, 120, 10, 28, 61, 18, 19] }
-  ]
+  const series = [{ name: 'series1', data: [31, 120, 10, 28, 61, 18, 19] }];
 
   return (
-    <FlexMotion
-      flexDirection="column"
-      h='100vh'
-    >
+    <FlexMotion flexDirection="column" h="100vh">
       <Header />
 
-      <Flex my='6' w='100%' maxWidth={FLEX_WIDTH} mx='auto' px='6'>
+      <Flex my="6" w="100%" maxWidth={FLEX_WIDTH} mx="auto" px="6">
         <Sidebar />
 
-        <SimpleGrid
-          flex='1'
-          gap='4'
-          minChildWidth={'200px'}
-        >
-          <Box
-            p='8'
-            bg='gray.800'
-            borderRadius={8}
-          >
-            <Text fontSize='lg' mb='4'>Inscritos da semana</Text>
-            <Chart
-              type='area'
-              height={160}
-              options={options}
-              series={series}
-            />
+        <SimpleGrid flex="1" gap="4" minChildWidth={'200px'}>
+          <Box p="8" bg="gray.800" borderRadius={8}>
+            <Text fontSize="lg" mb="4">
+              Inscritos da semana
+            </Text>
+            <Chart type="area" height={160} options={options} series={series} />
           </Box>
-          <Box
-            p='8'
-            bg='gray.800'
-            borderRadius={8}>
-            <Text fontSize='lg' mb='4'>Taxa de abertura</Text>
-            <Chart
-              type='area'
-              height={160}
-              options={options}
-              series={series}
-            />
+          <Box p="8" bg="gray.800" borderRadius={8}>
+            <Text fontSize="lg" mb="4">
+              Taxa de abertura
+            </Text>
+            <Chart type="area" height={160} options={options} series={series} />
           </Box>
         </SimpleGrid>
       </Flex>
     </FlexMotion>
   );
-};
+}

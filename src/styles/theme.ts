@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react"
+import { extendTheme } from '@chakra-ui/react';
 
 export const theme = extendTheme({
   colors: {
@@ -29,20 +29,20 @@ export const theme = extendTheme({
     heading: 'Roboto',
   },
   fontSizes: {
-    "1xs": "0.625rem", // 10px
-    "2xs": "0.75rem", // 12px
-    sm: "0.875rem", // 14px
-    md: "1rem", // 16px
-    lg: "1.125rem", // 18px
-    xl: "1.25rem", // 20px
-    "2xl": "1.375rem", // 22px
-    "3xl": "1.5rem", // 24px
-    "4xl": "1.625rem", // 26px
-    "5xl": "1.75", // 28px
-    "6xl": "1.875rem", // 30px
-    "7xl": "2rem", // 32px
-    "8xl": "2.125rem", // 34px
-    "9xl": "2.25rem", // 36px
+    '1xs': '0.625rem', // 10px
+    '2xs': '0.75rem', // 12px
+    sm: '0.875rem', // 14px
+    md: '1rem', // 16px
+    lg: '1.125rem', // 18px
+    xl: '1.25rem', // 20px
+    '2xl': '1.375rem', // 22px
+    '3xl': '1.5rem', // 24px
+    '4xl': '1.625rem', // 26px
+    '5xl': '1.75', // 28px
+    '6xl': '1.875rem', // 30px
+    '7xl': '2rem', // 32px
+    '8xl': '2.125rem', // 34px
+    '9xl': '2.25rem', // 36px
   },
   fontWeights: {
     hairline: 100,
@@ -59,8 +59,8 @@ export const theme = extendTheme({
     global: {
       body: {
         bg: 'gray.900',
-        color: 'gray.50'
+        color: 'gray.50',
       },
-    }
-  }
-})
+    },
+  },
+});
