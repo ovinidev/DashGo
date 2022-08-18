@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { SidebarContextProvider } from '../hooks/useSidebar';
 import { makeServer } from '../services/mirage';
 import { theme } from '../styles/theme';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PaginationProvider } from '../hooks/usePagination';
 import { queryClient } from '../services/queryClient';

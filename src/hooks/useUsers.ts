@@ -31,3 +31,10 @@ export const useUsers = () => {
     },
   );
 };
+
+// Pegando o ID da url
+export const useUsersOnPrefetch = () => {
+  return useQuery(['users', { id: 1 }], {
+    staleTime: 1000 * 5,
+  });
+};

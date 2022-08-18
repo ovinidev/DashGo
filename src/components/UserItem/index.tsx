@@ -7,13 +7,12 @@ import {
   Td,
   Text,
   Tr,
-} from "@chakra-ui/react";
-import { useState } from "react";
-import { RiPencilLine } from "react-icons/ri";
-import { useSidebar } from "../../hooks/useSidebar";
-import { IUsers } from "../../interfaces/users";
-import { getUsersById } from "../../services/axios/axiosInstance";
-import { queryClient } from "../../services/queryClient";
+} from '@chakra-ui/react';
+import { RiPencilLine } from 'react-icons/ri';
+import { useSidebar } from '../../hooks/useSidebar';
+import { getUsersById } from '../../services/axios/axiosInstance';
+import { queryClient } from '../../services/queryClient';
+import NextLink from 'next/link';
 
 interface UserItemProps {
   name: string;
@@ -27,7 +26,7 @@ export const UserItem = ({ name, email, date, id }: UserItemProps) => {
 
   const handlePrefetchUser = async (userId: string) => {
     return await queryClient.prefetchQuery(
-      ["users", { id: userId }],
+      ['users', { id: userId }],
       async () => {
         const response = await getUsersById(userId);
 
@@ -35,23 +34,28 @@ export const UserItem = ({ name, email, date, id }: UserItemProps) => {
       },
       {
         staleTime: 1000 * 60 * 10, // 10 minutos
-      }
+      },
     );
   };
 
   return (
     <Tr>
-      <Td px={{ base: "0", sm: "2", lg: "4" }}>
+      <Td px={{ base: '0', sm: '2', lg: '4' }}>
         <Checkbox colorScheme="pink" />
       </Td>
-      <Td px={{ base: "0", sm: "2", lg: "4" }}>
+      <Td px={{ base: '0', sm: '2', lg: '4' }}>
         <Box>
-          <Link color="purple.400" onClick={() => handlePrefetchUser(id)}>
-            <Text fontWeight="bold" fontSize={["2xs", "sm", "md"]}>
-              {name}
-            </Text>
-          </Link>
-          <Text fontSize={["1xs", "2xs", "sm"]} color="gray.300">
+          <NextLink href={`details/${id}`} passHref>
+            <Link
+              color="purple.400"
+              onMouseEnter={() => handlePrefetchUser(id)}
+            >
+              <Text fontWeight="bold" fontSize={['2xs', 'sm', 'md']}>
+                {name}
+              </Text>
+            </Link>
+          </NextLink>
+          <Text fontSize={['1xs', '2xs', 'sm']} color="gray.300">
             {email}
           </Text>
         </Box>
@@ -62,16 +66,16 @@ export const UserItem = ({ name, email, date, id }: UserItemProps) => {
           size="sm"
           fontSize="sm"
           colorScheme="whiteAlpha"
-          px={{ base: 0, lg: "2" }}
+          px={{ base: 0, lg: '2' }}
           leftIcon={
             <Icon
-              ml={{ base: "7px", xl: "7px", "2xl": 0 }}
+              ml={{ base: '7px', xl: '7px', '2xl': 0 }}
               fontSize="20"
               as={RiPencilLine}
             />
           }
         >
-          {isDesktop && "Editar"}
+          {isDesktop && 'Editar'}
         </Button>
       </Td>
     </Tr>

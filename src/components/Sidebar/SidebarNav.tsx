@@ -33,7 +33,7 @@ export const SidebarNav = () => {
         <Link
           title="formulários"
           icon={RiInputMethodLine}
-          href={'forms'}
+          href={'/forms'}
           asPath={asPath}
         />
         <Link
