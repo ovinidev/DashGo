@@ -1,4 +1,4 @@
-import { chakra, Flex, FlexProps } from '@chakra-ui/react';
+import { chakra, FlexProps } from '@chakra-ui/react';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { ReactNode } from 'react';
 

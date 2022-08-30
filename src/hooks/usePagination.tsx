@@ -7,11 +7,11 @@ import {
   useState,
 } from 'react';
 
-type ExampleContextProps = {
+type PaginationProps = {
   children: ReactNode;
 };
 
-type ExampleContextData = {
+type PaginationData = {
   currentPage: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
   siblingsCount: number;
@@ -22,9 +22,9 @@ type ExampleContextData = {
   setTotalCountOfRegisters: Dispatch<SetStateAction<number>>;
 };
 
-const PaginationContext = createContext({} as ExampleContextData);
+const PaginationContext = createContext({} as PaginationData);
 
-export const PaginationProvider = ({ children }: ExampleContextProps) => {
+export const PaginationProvider = ({ children }: PaginationProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const siblingsCount = 1;

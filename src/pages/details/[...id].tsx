@@ -5,7 +5,7 @@ import { IUsers } from '../../interfaces/users';
 
 export default function Example() {
   const { asPath } = useRouter();
-  const pageId = asPath.slice(-1);
+  const pageId = asPath.split('/')[2];
 
   const { data } = useQuery<IUsers>(['users', { id: pageId }], {
     staleTime: 1000 * 5,

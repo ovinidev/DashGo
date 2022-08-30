@@ -34,8 +34,6 @@ export default function Create() {
 
   const router = useRouter();
 
-  // Quando chamar essa chamada para API poderemos monitorar o estado dessa chamada
-  // loading, error, etc.
   const { error, isLoading, isSuccess, mutateAsync } = useMutation(
     async (user: CreateUserInput) => {
       await createUser(user);

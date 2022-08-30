@@ -6,8 +6,11 @@ import { LOGIN_WIDTH } from '../constants/widthScreen';
 import { loginSchema } from '../validation/schema';
 import { LoginInputs } from '../interfaces/hookForm';
 import { FlexMotion } from '../components/Motion/FlexMotion';
+import { useRouter } from 'next/router';
 
 export default function SignIn() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -15,8 +18,9 @@ export default function SignIn() {
   } = useForm<LoginInputs>({
     resolver: yupResolver(loginSchema),
   });
+
   const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
-    console.log(data);
+    router.push('/users');
   };
 
   return (
@@ -51,7 +55,6 @@ export default function SignIn() {
           mt="6"
           colorScheme="pink"
           isLoading={isSubmitting}
-          onMouseEnter={() => console.log('mouse')}
           w={{ base: '80%', lg: '100%', nb: '20%' }}
           alignSelf="center"
         >
