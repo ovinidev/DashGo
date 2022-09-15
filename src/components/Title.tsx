@@ -1,11 +1,14 @@
-import { Heading, HeadingProps } from "@chakra-ui/react";
+import { Heading, HeadingProps } from '@chakra-ui/react';
 
 interface TitleProps extends HeadingProps {
-  text: string
+  text: string;
 }
 
 export const Title = ({ text, ...rest }: TitleProps) => {
   return (
-    <Heading size='lg' fontWeight='normal' {...rest}>{text}</Heading>
+    <Heading size="lg" fontWeight="normal" {...rest}>
+      {' '}
+      {text}
+    </Heading>
   );
 };
