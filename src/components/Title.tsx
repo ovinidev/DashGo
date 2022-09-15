@@ -7,7 +7,6 @@ interface TitleProps extends HeadingProps {
 export const Title = ({ text, ...rest }: TitleProps) => {
   return (
     <Heading size="lg" fontWeight="normal" {...rest}>
-      {' '}
       {text}
     </Heading>
   );
